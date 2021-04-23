@@ -1,2 +1,3 @@
 call npm install
-node server.js
+start node server.js
+start npx json-server data/positions.json
