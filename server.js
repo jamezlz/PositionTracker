@@ -7,6 +7,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 
 const PORT = 5000;
+const symbols = ["ETH", "BTC"];
 const dataUrl = "http://localhost:3000/positions";
 
 app.get("/", async (req,res)=>{
@@ -19,15 +20,17 @@ app.get("/", async (req,res)=>{
 });
 
 app.get("/add",(req,res)=>{
-    res.render("pages/addPosition");
+    res.render("pages/addPosition", {symbols: symbols});
 });
 
 app.post("/add", async (req,res)=>{
     try {
+        console.log(req.body);
         await axios.post(dataUrl,req.body);
         res.status(200).send({msg: "success"});
     } catch (error) {
         console.error(error);
+        res.status(504).send({msg: "error"})
     }
 });
 

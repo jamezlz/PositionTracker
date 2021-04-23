@@ -10,10 +10,36 @@
 </header>
 
 <main>
-    <div class="jumbotron">
-        <h1>This is the main Page</h1>
-        <p>Welcome to templating using EJS</p>
-    </div>
+    <table>
+        <thead>
+            <th>Symbol</th>
+            <th>Date</th>
+            <th>Purchase Price</th>
+            <th>Quantity</th>
+            <th>Purchase Value</th>
+            <th>Current Price</th>
+            <th>Current Value</th>
+            <th>Profit</th>
+            <th>Total Change</th>
+            <th>Daily Change</th>
+        </thead>
+        <tbody>
+            <% positions.forEach((position)=>{ %>
+                <tr>
+                    <td><%= position.symbol %></td>
+                    <td><%= position.date %></td>
+                    <td><%= position.purchasePrice %></td>
+                    <td><%= position.quantity %></td>
+                    <td><%= position.purchaseValue %></td>
+                    <td><%= position.currentPrice %></td>
+                    <td><%= position.currentValue %></td>
+                    <td><%= position.profit %></td>
+                    <td><%= position.totalChange %></td>
+                    <td><%= position.dailyChange %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
 </main>
 
 

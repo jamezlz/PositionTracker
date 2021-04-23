@@ -1,5 +1,11 @@
 {
   "positions": [
-
+    {
+      "symbol": "ETH",
+      "date": "2021-04-22",
+      "purchasePrice": "2500",
+      "quantity": "1",
+      "id": 1
+    }
   ]
 }

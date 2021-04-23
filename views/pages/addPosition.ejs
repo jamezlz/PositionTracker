@@ -8,14 +8,49 @@
 <header>
     <%- include('../partials/header'); %>
 </header>
-
 <main>
-    <div class="jumbotron">
-        <h1>This is the add Page</h1>
-        <p>Welcome to templating using EJS</p>
-    </div>
+    <form method="POST" id="addForm">
+        <label for="symbol">Symbol</label>
+        <input list="symbols" name="symbol" id="symbol">
+        <datalist id="symbols">
+            <% symbols.forEach((symbol)=>{ %>
+                <option value=<%= symbol %>>
+            <% }); %>
+        </datalist>
+
+        <label for="date">Date</label>
+        <input type="date" name="date" id="date">
+
+        <label for="purchasePrice">Price</label>
+        <input name="purchasePrice" id="purchasePrice">
+
+        <label for="quantity">Quantity</label>
+        <input name="quantity" id="quantity">
+
+        <input type="submit" value="Submit">
+    </form>
 </main>
 
+<script>
+$('#addForm').submit(function(e){
+    e.preventDefault();
+    $.ajax({
+        url: '/add',
+        type: 'post',
+        data: JSON.stringify({
+            symbol: $("#symbol").val(),
+            date: $("#date").val(),
+            purchasePrice: $("#purchasePrice").val(),
+            quantity: $("#quantity").val()
+        }),
+        contentType: "application/json; charset=utf-8",
+        dataType   : "json",
+        success:function(){
+            // Whatever you want to do after the form is successfully submitted
+        }
+    });
+});
+</script>
 
 </body>
 </html>
